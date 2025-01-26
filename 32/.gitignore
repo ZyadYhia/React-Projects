@@ -1,0 +1,3 @@
+# Ignore TypeScript cache
+node_modules/typescript/lib/*.js
+node_modules/

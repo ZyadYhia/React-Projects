@@ -1,11 +1,14 @@
+// import { createStore } from 'redux'
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 
-const initialCounterState = { counter: 0, showCounter: true }
-const initialAuthState = { isAuthenticated: false }
+const initialState = { counter: 0, showCounter: true }
 
+// the toolkit have internally package that make brand new object for mutations 
+// so we don't need to return brand new object
 const counterSlice = createSlice({
     name: 'counter',
-    initialState: initialCounterState,
+    // initialStete : initialState
+    initialState,
     reducers: {
         increment(state) {
             state.counter++
@@ -20,29 +23,20 @@ const counterSlice = createSlice({
             state.showCounter = !state.showCounter
         }
     },
-
+    
 })
 
-const authSlice = createSlice({
-    name: 'auth',
-    initialState: initialAuthState,
-    reducers: {
-        login(state) {
-            state.isAuthenticated = true
-        },
-        logout(state) {
-            state.isAuthenticated = false
-        }
-    }
-})
 
+
+// const store = createStore(counterSlice.reducer)
+// this is used when we need to make multible reducers 
+// as we have to send only one reducer to the store
 const store = configureStore({
-    reducer: {
-        counter: counterSlice.reducer,
-        auth: authSlice.reducer
-    }
+    // incase we have one reducer
+    reducer: counterSlice.reducer 
+    // reducer: {
+    //     counter: counterSlice.reducer
+    // }
 })
 export const counterActions = counterSlice.actions
-export const authActions = authSlice.actions
-
 export default store

@@ -1,4 +1,4 @@
-import { counterActions } from '../Store/index'
+import { counterActions } from '../Store/Counter'
 import { useSelector, useDispatch } from 'react-redux'
 import classes from './Counter.module.css';
 

@@ -1,0 +1,7 @@
+# See https://help.github.com/en/articles/ignoring-files#create-a-gitignore-file
+node_modules
+build
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local

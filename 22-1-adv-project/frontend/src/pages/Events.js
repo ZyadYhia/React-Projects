@@ -1,5 +1,4 @@
 import EventsList from "../components/EventsList";
-import EventsNavigation from "../components/EventsNavigation";
 const EVENTS = [
     {
         id: 'e1',

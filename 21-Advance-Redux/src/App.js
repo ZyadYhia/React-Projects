@@ -17,6 +17,12 @@ function App() {
   // this will cause that the cart will be saved in the database with initial values 
   useEffect(() => {
     const sendCartData = async () => {
+
+      dispatch(uiActions.showNotification({
+        status: 'pending',
+        title: 'Pending...',
+        message: 'Sending cart data!'
+      }))
       const response = await fetch('https://reactdb-1e67f-default-rtdb.europe-west1.firebasedatabase.app/cart.json', {
         method: 'PUT',
         body: JSON.stringify(cart)

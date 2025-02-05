@@ -1,35 +1,36 @@
-import EventsList from "../components/EventsList";
-const EVENTS = [
-    {
-        id: 'e1',
-        title: 'Programming for everyone',
-        description:
-            'Ever wanted to learn programming? Here is your chance!',
-        location: 'Somestreet 25, 12345 San Somewhereo',
-        image: 'https://jooinn.com/images600_/coding-and-programming-computer-science-and-it.jpg'
-    },
-    {
-        id: 'e2',
-        title: 'Networking for introverts',
-        description:
-            'You probably need no help with networking in general...',
-        location: 'Meetup Street 10, 12345 Meetup City',
-        image: 'https://www.arabianbusiness.com/cloud/2021/11/13/GyawRMqE-arabbusinesspeople_1-1200x750.jpg'
-    },
-    {
-        id: 'e3',
-        title: 'Networking for introverts',
-        description:
-            'You probably need no help with networking in general...',
-        location: 'Meetup Street 10, 12345 Meetup City',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDun7QdhL3CCDZuzb-Pm-3FiaENp_eR7MZjQ&s'
-    },
-]
+import { useLoaderData } from 'react-router-dom';
+
+import EventsList from '../components/EventsList';
+
 function EventsPage() {
+    // const fetchedEvents = useLoaderData();
+    // const { events: fetchedEvents } = useLoaderData();
+    const data = useLoaderData();
+    // if (data.isError) {
+    //     return <p>{data.message}</p>;
+    // }
+    const fetchedEvents = data.events;
     return (
         <>
-            <EventsList events={EVENTS} />
+            <EventsList events={fetchedEvents} />
         </>
     );
+}
+export const loader = async () => {
+
+    const response = await fetch('http://localhost:8080/event');
+
+    if (!response.ok) {
+        // return { isError: true, message: "Failed to fetch events" };
+        // here React will throw the closest error element
+        // throw { message: "Failed to fetch events" };
+        throw new Error(JSON.stringify({ message: "Failed to fetch events" }), {
+            status: 500,
+        });
+    } else {
+        // const resData = await response.json();
+        // return resData.events
+        return response;
+    }
 }
 export default EventsPage;

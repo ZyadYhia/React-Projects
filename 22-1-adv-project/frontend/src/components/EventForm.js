@@ -1,8 +1,9 @@
-import { Form, useNavigate, useNavigation } from 'react-router-dom';
+import { Form, useNavigate, useNavigation, useActionData } from 'react-router-dom';
 
 import classes from './EventForm.module.css';
 
 function EventForm({ method, event }) {
+  const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -14,6 +15,13 @@ function EventForm({ method, event }) {
     // Form is a special component that knows how to handle form submission
     // it sends the inputs to the action instead of sending to Backend
     <Form method={method} className={classes.form}>
+      {data && data.errors && (
+        <ui>
+          {Object.keys(data.errors).map((err) => (
+            <li key={err}>{data.errors[err]}</li>
+          ))}
+        </ui>
+      )}
       <p>
         <label htmlFor="title">Title</label>
         <input id="title" type="text" name="title" required defaultValue={event ? event?.title : ''} />
@@ -34,7 +42,7 @@ function EventForm({ method, event }) {
         <button type="button" onClick={cancelHandler}>
           Cancel
         </button>
-        <button disabled={isSubmitting}>{isSubmitting? 'Submitting...' : 'Save'}</button>
+        <button disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Save'}</button>
       </div>
     </Form>
   );

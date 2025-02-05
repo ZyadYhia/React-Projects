@@ -5,9 +5,9 @@ function ErrorPage() {
     // useRouterError is used to get the error message
     const routeError = useRouteError();
     let title = "An error occurred!";
-    let message = "Something went wrong!";
+    let message = "Something went wrong!";    
     if (routeError.status === 500) {
-        message = JSON.parse (routeError.data).message;
+        message = JSON.parse(routeError.data).message;
     }
     if (routeError.status === 404) {
         title = "Page not found!";

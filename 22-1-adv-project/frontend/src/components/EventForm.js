@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 
 import classes from './EventForm.module.css';
 
@@ -9,7 +9,9 @@ function EventForm({ method, event }) {
   }
 
   return (
-    <form className={classes.form}>
+    // Form is a special component that knows how to handle form submission
+    // it sends the inputs to the action instead of sending to Backend
+    <Form method={method} className={classes.form}>
       <p>
         <label htmlFor="title">Title</label>
         <input id="title" type="text" name="title" required defaultValue={event ? event?.title : '' } />
@@ -32,7 +34,7 @@ function EventForm({ method, event }) {
         </button>
         <button>Save</button>
       </div>
-    </form>
+    </Form>
   );
 }
 

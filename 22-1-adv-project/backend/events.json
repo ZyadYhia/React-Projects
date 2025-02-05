@@ -1,11 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    }
-  ]
-}
+{"events":[{"title":"Incidunt rerum face","image":"https://thumbs.dreamstime.com/b/free-illustrations-vector-cartoon-spiderman-logo-illustrations-vector-cartoon-spiderman-logo-art-design-template-white-background-282671176.jpg","date":"1971-04-28","description":"Esse vel ad quae do","id":"988b02bf-9f97-415a-bdba-c77a62dc1fb3"},{"title":"Consectetur aliqua ","image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTne0q1BwGGUrkUuFD9KQfmz222MDMY6gk0HA&s","date":"1987-03-04","description":"Quibusdam aspernatur","id":"9da8296a-880b-434e-8968-781d1d117233"},{"id":"e1","title":"A dummy event","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}

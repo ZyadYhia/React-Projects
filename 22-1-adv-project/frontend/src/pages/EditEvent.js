@@ -5,7 +5,7 @@ function EditEventPage() {
 
     return (
         <>
-            <EventForm method="PUT" event={data.event} />
+            <EventForm method="PATCH" event={data.event} />
         </>
     );
 }

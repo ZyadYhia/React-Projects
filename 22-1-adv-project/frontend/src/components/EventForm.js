@@ -67,7 +67,7 @@ export async function action({request, params}) {
       return response
   }
   if (!response.ok) {
-      throw new Error(JSON.stringify({ message: "Failed to update event" }), {
+      throw new Response(JSON.stringify({ message: "Failed to update event" }), {
           status: 500
       })
   }

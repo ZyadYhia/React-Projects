@@ -1,10 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+// import { useQuery } from "@tanstack/react-query";
+// import { fetchEvent } from "../../utils/http.js";
+// import { useParams } from "react-router-dom";
 
 export default function EventItem({ event }) {
-  const formattedDate = new Date(event.date).toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
+  // const { data, isPending, isError, error } = useQuery({
+  //   queryKey: ["event", event.id],
+  //   queryFn: (signal) => {
+  //     fetchEvent({id: event.id, signal});
+  //   },
+  // });
+  const formattedDate = new Date(event.date).toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
   });
   return (
     <article className="event-item">

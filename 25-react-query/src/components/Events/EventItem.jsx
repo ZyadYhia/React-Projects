@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function EventItem({ event }) {
   // const { data, isPending, isError, error } = useQuery({
-  //   queryKey: ["event", event.id],
+  //   queryKey: ["events", event.id],
   //   queryFn: (signal) => {
   //     fetchEvent({id: event.id, signal});
   //   },

@@ -1,23 +1,23 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 
-import { fetchEvents } from '../../utils/http.js';
-import LoadingIndicator from '../UI/LoadingIndicator.jsx';
-import ErrorBlock from '../UI/ErrorBlock.jsx';
-import EventItem from './EventItem.jsx';
+import { fetchEvents } from "../../utils/http.js";
+import LoadingIndicator from "../UI/LoadingIndicator.jsx";
+import ErrorBlock from "../UI/ErrorBlock.jsx";
+import EventItem from "./EventItem.jsx";
 
 export default function NewEventsSection() {
-  const { data, isPending, isError, error,  } = useQuery({
-    queryKey: ['events'],
-    queryFn: fetchEvents,
+  const { data, isPending, isError, error } = useQuery({
+    queryKey: ["events", { max: 3 }],
+    queryFn: ({ signal, queryKey }) => fetchEvents({ signal, ...queryKey[1] }),
     // staleTime is used to set the time in milliseconds that the cache is considered fresh
     // which means that it will not be refetched until the time has passed
     // default is 0
     staleTime: 1000 * 5,
-    // gcTime is used to set the time in milliseconds that the cache is considered expires 
+    // gcTime is used to set the time in milliseconds that the cache is considered expires
     // which means that it will be removed from the cache and needed yo be updated
     // default is 5 minutes
     // gcTime: 1000
-  })
+  });
   let content;
 
   if (isPending) {
@@ -25,9 +25,7 @@ export default function NewEventsSection() {
   }
 
   if (isError) {
-    content = (
-      <ErrorBlock title="An error occurred" message={error?.message}/>
-    );
+    content = <ErrorBlock title="An error occurred" message={error?.message} />;
   }
 
   if (data) {

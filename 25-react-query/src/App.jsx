@@ -10,7 +10,7 @@ import { queryClient } from "./utils/http.js";
 import Events from "./components/Events/Events.jsx";
 import EventDetails from "./components/Events/EventDetails.jsx";
 import NewEvent from "./components/Events/NewEvent.jsx";
-import EditEvent from "./components/Events/EditEvent.jsx";
+import EditEvent, { loader as editEventLoader, action as editEventAction } from "./components/Events/EditEvent.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +34,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/events/:id/edit",
+        loader: editEventLoader,
+        action: editEventAction,
         element: <EditEvent />,
       },
     ],
